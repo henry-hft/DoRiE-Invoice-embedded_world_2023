@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DoRiE - Invoice</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+	<!-- Override some Bootstrap CDN styles - normally you should apply these through your Bootstrap variables / sass -->
+    <link rel="stylesheet" href="css/invoice.css">
+
+</head>
+<body>
+
+<div style="background-color: #000000; height: 10px;"></div>
+
+<div class="container-fluid pt-2 pt-md-4 px-md-5">
+
+    <!-- Invoice heading -->
+
+    <table class="table table-borderless">
+        <tbody>
+        <tr>
+            <td class="border-0">
+                <div class="row">
+                    <div class="col-md text-center text-md-left mb-3 mb-md-0">
+                        <img class="logo img-fluid mb-3" src="images/invoice_logo.png" style="max-height: 140px;"/>
+                        <br>
+
+                        <h2 class="mb-1">DoRiE</h2>
+                        Institut für Mikroelektronik Stuttgart<br>
+						IMS CHIPS<br>
+						Allmandring 30a<br>
+						70569 Stuttgart<br>
+                        <strong>ki.ims-chips.de</strong>
+                    </div>
+
+                    <div class="col text-center text-md-right">
+                        <h1 id="orderid">Invoice</h1>
+						<h2 id="seat" class="mb-0"></h2>
+                        <h5 id="time" class="mb-0 mt-3"></h5>
+						<h5 id="status" class="mb-0 mt-3"></h5>
+						<h2><span id="paid" class="badge"></span></h2>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Invoice items table -->
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Summary</th>
+            <th class="text-right">Price</th>
+        </tr>
+        </thead>
+        <tbody id="items">
+ 
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2" class="text-right border-0 pt-4"><h5 id="total">Total: 0,00 €</h5></td>
+			</tr>
+		</tfoot>
+    </table>
+	
+	<div class="text-center pt-2">
+		<button type="button" id="button_cancel" class="btn btn-danger btn-lg">Cancel</button>
+		<button type="button" id="button_pay" class="btn btn-success btn-lg">Pay</button>
+	</div>
+    <!-- Thank you note -->
+
+    <h5 class="text-center pt-2">
+        Thank you for your order!
+    </h5>
+
+</div>
+	<script src="js/jquery.slim.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/invoice.js"></script>
+</body>
+</html>
