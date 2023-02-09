@@ -28,9 +28,9 @@ SQLite
 
 `cd /var/www/html`
 
-`sudo git clone https://github.com/henry-hft/DoRiE-Invoice`
+`sudo git clone https://github.com/henry-hft/DoRiE-Invoice-embedded_world_2023`
 
-`sudo mv DoRiE-Invoice/* .`
+`sudo mv DoRiE-Invoice-embedded_world_2023/* .`
 
 `sudo php setup.php`
 
@@ -51,9 +51,9 @@ Ip address or domain of the server:
 
 `sudo rm -r *`
 
-`sudo git clone https://github.com/henry-hft/DoRiE-Invoice`
+`sudo git clone https://github.com/henry-hft/DoRiE-Invoice-embedded_world_2023`
 
-`sudo mv DoRiE-Invoice/* .`
+`sudo mv DoRiE-Invoice-embedded_world_2023/* .`
 
 `sudo php setup.php`
 
