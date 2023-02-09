@@ -60,7 +60,7 @@ if ($stmt->fetch()) {
 		// order status successfully set to completed
 		$invoiceIdFormatted = sprintf("%04d", $invoiceId);
 		$url = urlencode("$baseUrl/invoice.html?id=$invoiceId");
-		$response = ["error" => false, "qrcode" => "qrcode.php?url=$url"];
+		$response = ["error" => false, "qrcode" => "$baseUrl/qrcode.php?url=$url"];
 	} else {
 		Response::json(true, 400, "Could not set invoice status to completed", true);
 	}
@@ -137,7 +137,7 @@ if ($stmt->execute()) {
 }
 
 // add event
-$image = "$baseUrl/qrcode.php?url=$url";
+$image = "qrcode.php?url=$url";
 $text = "Seat: $seat | Invoice: #$invoiceIdFormatted";
 
 $query = "INSERT INTO events (image, text, duration) VALUES (:image, :text, :duration)";
