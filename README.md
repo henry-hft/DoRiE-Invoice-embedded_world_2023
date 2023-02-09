@@ -1,8 +1,8 @@
 # DoRiE-Invoice
 
-<img src="images/ims-chips.png"
-     alt="Institut für Mikroelektronik Stuttgart (IMS CHIPS)"
-     style="width: 500px;" />
+<img src="images/logos.png"
+     alt="Institut für Mikroelektronik Stuttgart (IMS CHIPS), FZI Forschungszentrum Informatik, Hahn-Schickard-Gesellschaft"
+     style="width: 700px;" />
 
 Apache 2<br>
 PHP 8.1<br>
