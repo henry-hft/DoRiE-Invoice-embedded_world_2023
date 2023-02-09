@@ -6,7 +6,7 @@ $(document).ready((() => {
     let permanent = false;
     let activeEvent = false;
     let checks = 0;
-	let queue = [];
+    let queue = [];
 
     let logosVisible = true;
 
@@ -46,19 +46,19 @@ $(document).ready((() => {
             $("#text").css("padding-top", "0px");
         }
 
-		console.log("Active event: ");
-		console.log(activeEvent);
+        console.log("Active event: ");
+        console.log(activeEvent);
         if (!activeEvent) {
             showLogos();
         } else {
-			if(imageName !== image.getAttribute("src")) {
-				 showImage(imageName);
-			}
-           
-			if(text !== $('#text').html()) {
-				 $('#text').html(text);
-			}
-            
+            if (imageName !== image.getAttribute("src")) {
+                showImage(imageName);
+            }
+
+            if (text !== $('#text').html()) {
+                $('#text').html(text);
+            }
+
         }
 
         setTimeout(change, interval);
@@ -68,9 +68,11 @@ $(document).ready((() => {
 
 
     function getEvent() {
-		console.log(Date.now());
-		console.log(queue);
-		console.log(checks);
+        /* Debugging
+          console.log(Date.now());
+          console.log(queue);
+          console.log(checks);
+          */
         fetch('api/event.php', {
                 method: 'get',
                 headers: {
@@ -81,34 +83,38 @@ $(document).ready((() => {
             .then(function(data) {
 
                 if (data.error === false) {
-					
-					if (queue.length > 0 && checks == 0) {
-						console.log("queue not empty");
-						data.image = queue[0].image;
-						data.text = queue[0].text;
-						data.duration = queue[0].duration;
-						queue.shift();
-					}
-					
+
+                    if (queue.length > 0 && checks == 0) {
+                        console.log("queue not empty");
+                        data.image = queue[0].image;
+                        data.text = queue[0].text;
+                        data.duration = queue[0].duration;
+                        queue.shift();
+                    }
+
                     if (data.duration > 0) {
 
-						if (checks == 0) {
-							
-							if (data.image !== "") {
-								imageName = data.image;
-							}
-							text = data.text;
-							
-							activeEvent = true;
-							checks = data.duration / interval;
-							
-						} else {
-							if (data.image != "" || data.text != "") {
-								queue.push({"text": data.text, "image": data.image, "duration": data.duration});
-								console.log(queue);
-							}
-						}
-                      
+                        if (checks == 0) {
+
+                            if (data.image !== "") {
+                                imageName = data.image;
+                            }
+                            text = data.text;
+
+                            activeEvent = true;
+                            checks = data.duration / interval;
+
+                        } else {
+                            if (data.image != "" || data.text != "") {
+                                queue.push({
+                                    "text": data.text,
+                                    "image": data.image,
+                                    "duration": data.duration
+                                });
+                                console.log(queue);
+                            }
+                        }
+
                         if (data.text === "Invoice opened") {
                             //data.text = "";
                             checks = 20;
