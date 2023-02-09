@@ -46,11 +46,19 @@ $(document).ready((() => {
             $("#text").css("padding-top", "0px");
         }
 
+		console.log("Active event: ");
+		console.log(activeEvent);
         if (!activeEvent) {
             showLogos();
         } else {
-            showImage(imageName);
-            $('#text').html(text);
+			if(imageName !== image.getAttribute("src")) {
+				 showImage(imageName);
+			}
+           
+			if(text !== $('#text').html()) {
+				 $('#text').html(text);
+			}
+            
         }
 
         setTimeout(change, interval);
@@ -60,6 +68,9 @@ $(document).ready((() => {
 
 
     function getEvent() {
+		console.log(Date.now());
+		console.log(queue);
+		console.log(checks);
         fetch('api/event.php', {
                 method: 'get',
                 headers: {
@@ -87,6 +98,10 @@ $(document).ready((() => {
 								imageName = data.image;
 							}
 							text = data.text;
+							
+							activeEvent = true;
+							checks = data.duration / interval;
+							
 						} else {
 							if (data.image != "" || data.text != "") {
 								queue.push({"text": data.text, "image": data.image, "duration": data.duration});
@@ -95,12 +110,9 @@ $(document).ready((() => {
 						}
                       
                         if (data.text === "Invoice opened") {
-                            data.text = "";
-                            checks = 0;
+                            //data.text = "";
+                            checks = 20;
                         }
-						
-						activeEvent = true;
-                        checks = data.duration / interval;
 
                     } else if (data.duration < 0) {
                         activeEvent = true;
