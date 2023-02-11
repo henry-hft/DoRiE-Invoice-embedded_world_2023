@@ -133,6 +133,7 @@ if ($stmt->execute()) {
 }
 
 // add event
+/*
 $image = "images/products/$productId.png";
 $text = "Seat: $seat<br>$productName: $productDescription<br>$productPriceFormatted";
 
@@ -147,6 +148,7 @@ if ($stmt->execute()) {
 } else {
     Response::json(true, 400, "Could not create a new event", true);
 }
+*/
 										
 // add product to order
 $query = "INSERT INTO orders (invoiceid, productid, price, time) VALUES (:invoiceid, :productid, :price, :time)";
