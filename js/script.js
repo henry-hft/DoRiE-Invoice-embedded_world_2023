@@ -140,8 +140,10 @@ $(document).ready((() => {
                             checks--;
 
                         } else if (activeEvent) {
-                            activeEvent = false;
-                            hideAll();
+                            if (!permanent) {
+                                activeEvent = false;
+                                hideAll();
+                            }
                         }
 
                     }
