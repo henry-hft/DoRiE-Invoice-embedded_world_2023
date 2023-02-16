@@ -40,7 +40,7 @@ $(document).ready((() => {
     function change() {
         getEvent();
 
-        if (image.getAttribute("src") === null && text !== "") {
+        if (logos.style.display === "none" && text !== "") {
             $("#text").css("padding-top", "400px");
         } else {
             $("#text").css("padding-top", "0px");
@@ -140,10 +140,10 @@ $(document).ready((() => {
                             checks--;
 
                         } else if (activeEvent) {
-                            if (!permanent) {
-                                activeEvent = false;
-                                hideAll();
-                            }
+							if (!permanent) {
+								activeEvent = false;
+								hideAll();
+							}
                         }
 
                     }
